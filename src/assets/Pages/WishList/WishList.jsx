@@ -36,7 +36,8 @@ export default function WishList() {
     }
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-5">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-5 p-4">
+      
             {wishList.map((item) => (
                 <div key={item.id} className="border p-4 space-y-2">
                     <img

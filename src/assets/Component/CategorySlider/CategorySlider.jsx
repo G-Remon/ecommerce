@@ -29,27 +29,28 @@ export default function CategorySlider() {
   return (
     <>
 
-        <Swiper
-          loop={true}
-          spaceBetween={20}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: 2,
-            },
-            768: {
-              slidesPerView: 3,
-            },
-            1024: {
-              slidesPerView: 6,
-            },
-          }}
-        >
-          {data.data.data.map((category) => (
-            <SwiperSlide key={category._id}>
-              <Link to={`/SubCat/${category._id}`}>
+      <Swiper
+        loop={true}
+        spaceBetween={20}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 6,
+          },
+        }}
+      >
+        {data.data.data.map((category) => (
+          <SwiperSlide key={category._id}>
+            <Link to={`/SubCat/${category._id}`}>
+              <div className='px-3'>
                 <div className="border rounded-lg overflow-hidden shadow hover:shadow-green-500 hover:shadow-lg transition p-2 text-center">
                   <img
                     src={category.image}
@@ -58,10 +59,11 @@ export default function CategorySlider() {
                   />
                   <h2 className="text-green-600 font-semibold">{category.name}</h2>
                 </div>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </>
   )
 }

@@ -29,7 +29,7 @@ export default function AddCart() {
                 <Link to={"/home"} className=' bg-[#0aad0a] px-4 py-2 text-white rounded-md'> Click to go Home</Link>
             </div>
 
-            <div className=' ms-auto w-fit'>
+            <div className=' ms-auto w-fit pt-7'>
                 <button className='text-[16px] items-center bg-red-600 px-4 py-2 rounded-md text-white cursor-pointer '>Clear Cart</button>
             </div>
         </section>

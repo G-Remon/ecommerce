@@ -63,7 +63,7 @@ export default function Orders() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
                         {order.cartItems.map((item) => (
                             <div
                                 key={item.product.id}
