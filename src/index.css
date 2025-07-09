@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --mainColor: #0aad0a;
+}
+@import "react-image-gallery/styles/css/image-gallery.css";
+body {
+  font-family: 'Encode Sans Expanded', sans-serif;
+}
+
+@utility container {
+  margin: auto;
+  @media (width >=80rem
+  ) {
+    max-width: 75rem
+    ;
+  }
+
+}
