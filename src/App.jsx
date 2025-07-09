@@ -1,5 +1,5 @@
 import { Accessibility, BadgeSwissFranc } from "lucide-react"
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
 import Layout from "./assets/Component/Layout/Layout"
 import Home from './assets/Pages/Home/Home';
 import Login from './assets/Pages/Login/Login';
@@ -25,14 +25,15 @@ import Orders from "./assets/Pages/Orders/Orders";
 import WishList from "./assets/Pages/WishList/WishList";
 import WishProvider from "./assets/context/wishContext/WishContext";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from './../node_modules/@tanstack/react-query-devtools/src/production';
-const Routers = createBrowserRouter([
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+
+const Routers = createHashRouter([
   {
     path: "/",
     element: <Protected><Layout /></Protected>,
     children: [
-      { index: true, element: <Navigate to="home" /> }, 
-      { path: "home", element: <Home /> }, 
+      { index: true, element: <Navigate to="home" /> },
+      { path: "home", element: <Home /> },
       { path: "AddCart", element: <AddCart /> },
       { path: "productDetails/:id", element: <ProductDetails /> },
       { path: "category", element: <Category /> },
@@ -57,13 +58,10 @@ const Routers = createBrowserRouter([
   }
 ])
 
-
-
-
 const queryClient = new QueryClient()
+
 function App() {
   return (
-
     <QueryClientProvider client={queryClient}>
       <TokenProvider>
         <CartProvider>
@@ -75,9 +73,7 @@ function App() {
       </TokenProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
-  )
-    ;
+  );
 }
 
 export default App;
-
