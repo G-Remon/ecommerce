@@ -2,7 +2,7 @@ Ecommerce React App
 
 A modern ecommerce frontend built with React.js.Displays products, handles cart and wishlist, and supports smooth navigation with dynamic pages.
 
-🌐 Live Demo: E-commerce
+🌐 **Live Demo:** [E-commerce](https://ecommerce-ry4o.vercel.app/)
 
 🧠 Key Concepts
 
