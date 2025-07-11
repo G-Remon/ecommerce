@@ -1,12 +1,46 @@
-# React + Vite
+Ecommerce React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern ecommerce frontend built with React.js.Displays products, handles cart and wishlist, and supports smooth navigation with dynamic pages.
 
-Currently, two official plugins are available:
+🌐 Live Demo: E-commerce
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧠 Key Concepts
 
-## Expanding the ESLint configuration
+Context API: Manages shared state for cart and wishlist.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React Router: Handles page navigation without reload.
+
+Axios: Fetches product data from APIs.
+
+Reusable Components: Product Card, Navbar, Footer and others.
+
+Swiper: Displays product slides and carousels.
+
+⚙️ Tech Stack
+
+React
+
+React Router DOM
+
+Axios
+
+Swiper
+
+🚀 How to Run
+
+git clone https://github.com/G-Remon/ecommerce.git
+cd ecommerce
+npm install
+npm run dev
+
+⚠️ Limitations
+
+No backend, uses static or mock data.
+
+No authentication yet.
+
+Can be improved by adding Redux or Zustand for larger state logic.
+
+📬 Contact
+
+Gergis Remon | https://github.com/G-Remon | 01001016693
