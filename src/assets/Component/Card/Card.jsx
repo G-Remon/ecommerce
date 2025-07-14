@@ -1,8 +1,9 @@
 import { Eye, Heart, ShoppingCart, Star } from 'lucide-react';
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { CartContext } from '../../context/Card.Context/Card.context';
 import { WishContext } from '../../context/wishContext/WishContext';
 import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 
 export default function Card(productInfo) {
     const { id, imageCover, title, category, description, price, ratingsAverage } =
@@ -21,29 +22,50 @@ export default function Card(productInfo) {
         }
     }
 
-    return (
-        <div className='card bg-white shadow-2xl rounded-md overflow-hidden flex flex-col'>
-            <div className='relative group'>
-                <img className='w-full object-cover' src={imageCover} alt='Product' />
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, threshold: 0.2 });
 
-                {/* overlay desktop only */}
+    return (
+        <motion.div
+            ref={ref}
+            className='card bg-white shadow-2xl rounded-md overflow-hidden flex flex-col'
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+
+        >
+            <div className='relative group'>
+                <motion.img
+                    className='w-full object-cover'
+                    src={imageCover}
+                    alt='Product'
+
+                    transition={{ duration: 0.3 }}
+                />
+
                 <div className='hidden md:flex absolute inset-0 bg-gray-800/40 opacity-0 group-hover:opacity-100 items-center justify-center gap-4 transition-opacity'>
                     <Link to={`/productDetails/${id}`}>
-                        <Eye className="bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2" />
+                        <motion.div>
+                            <Eye className="bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2" />
+                        </motion.div>
                     </Link>
 
-                    <ShoppingCart
-                        className='bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2'
-                        onClick={() => addToCart(id)}
-                    />
+                    <motion.div>
+                        <ShoppingCart
+                            className='bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2'
+                            onClick={() => addToCart(id)}
+                        />
+                    </motion.div>
 
-                    <Heart
-                        onClick={toggleWishList}
-                        className={`w-10 h-10 cursor-pointer rounded-full p-2 ${isInWishList
-                            ? 'bg-red-600 text-white'
-                            : 'bg-[#0aad0a] text-white hover:bg-white hover:text-[#0aad0a]'
-                            } transition-colors duration-300`}
-                    />
+                    <motion.div>
+                        <Heart
+                            onClick={toggleWishList}
+                            className={`w-10 h-10 cursor-pointer rounded-full p-2 ${isInWishList
+                                ? 'bg-red-600 text-white'
+                                : 'bg-[#0aad0a] text-white hover:bg-white hover:text-[#0aad0a]'
+                                } transition-colors duration-300`}
+                        />
+                    </motion.div>
                 </div>
             </div>
 
@@ -61,25 +83,30 @@ export default function Card(productInfo) {
                 </div>
             </div>
 
-            {/* actions for mobile only */}
             <div className='flex md:hidden justify-center items-center gap-4 p-4 border-t'>
                 <Link to={`/productDetails/${id}`}>
-                    <Eye className="bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2" />
+                    <motion.div>
+                        <Eye className="bg-[#0aad0a] text-white w-8 h-8 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2" />
+                    </motion.div>
                 </Link>
 
-                <ShoppingCart
-                    className='bg-[#0aad0a] text-white w-10 h-10 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2'
-                    onClick={() => addToCart(id)}
-                />
+                <motion.div>
+                    <ShoppingCart
+                        className='bg-[#0aad0a] text-white w-8 h-8 cursor-pointer rounded-full hover:bg-white hover:text-[#0aad0a] transition-colors duration-300 p-2'
+                        onClick={() => addToCart(id)}
+                    />
+                </motion.div>
 
-                <Heart
-                    onClick={toggleWishList}
-                    className={`w-10 h-10 cursor-pointer rounded-full p-2 ${isInWishList
-                        ? 'bg-red-600 text-white'
-                        : 'bg-[#0aad0a] text-white hover:bg-white hover:text-[#0aad0a]'
-                        } transition-colors duration-300`}
-                />
+                <motion.div>
+                    <Heart
+                        onClick={toggleWishList}
+                        className={`w-8 h-8 cursor-pointer rounded-full p-2 ${isInWishList
+                            ? 'bg-red-600 text-white'
+                            : 'bg-[#0aad0a] text-white hover:bg-white hover:text-[#0aad0a]'
+                            } transition-colors duration-300`}
+                    />
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 }

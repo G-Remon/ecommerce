@@ -5,6 +5,7 @@ import { CartContext } from '../../context/Card.Context/Card.context'
 import { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import Card from '../../Component/Card/Card'
 import ReactImageGallery from 'react-image-gallery'
@@ -13,7 +14,6 @@ export default function ProductDetails() {
   const { id } = useParams()
   const { addToCart } = useContext(CartContext)
 
-  // get product details
   const {
     data: productDetail,
     isLoading: isLoadingDetail,
@@ -29,7 +29,6 @@ export default function ProductDetails() {
     enabled: !!id,
   })
 
-  // get related products
   const {
     data: relatedProducts,
     isLoading: isLoadingRelated,
@@ -85,7 +84,12 @@ export default function ProductDetails() {
       <div className="my-6 px-5">
         <h2 className="text-2xl font-bold mb-4">Related Products</h2>
         <Swiper
+          modules={[Autoplay]}
           loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           spaceBetween={20}
           breakpoints={{
             0: {

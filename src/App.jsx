@@ -27,6 +27,7 @@ import WishProvider from "./assets/context/wishContext/WishContext";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
+
 const Routers = createHashRouter([
   {
     path: "/",
